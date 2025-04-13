@@ -11,7 +11,7 @@ jobs:
       - name: Pull repo and restart containers on server
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: http://18.153.50.166
+          host: http://18.153.50.166:3000
           username: bitnami
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
