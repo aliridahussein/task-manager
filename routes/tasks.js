@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     );
     res.json(newTask.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.error('❌ Error in /api/tasks route:', err);
     res.status(500).send('Server error');
   }
 });
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     const allTasks = await pool.query('SELECT * FROM tasks ORDER BY id');
     res.json(allTasks.rows);
   } catch (err) {
-    console.error(err.message);
+    console.error('❌ Error in /api/tasks route:', err);
     res.status(500).send('Server error');
   }
 });
@@ -39,7 +39,7 @@ router.put('/:id', async (req, res) => {
     );
     res.json(updatedTask.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.error('❌ Error in /api/tasks route:', err);
     res.status(500).send('Server error');
   }
 });
@@ -51,7 +51,7 @@ router.delete('/:id', async (req, res) => {
     await pool.query('DELETE FROM tasks WHERE id = $1', [id]);
     res.json({ message: 'Task deleted' });
   } catch (err) {
-    console.error(err.message);
+    console.error('❌ Error in /api/tasks route:', err);
     res.status(500).send('Server error');
   }
 });
@@ -66,7 +66,7 @@ router.get('/:id', async (req, res) => {
       }
       res.json(result.rows[0]);
     } catch (err) {
-      console.error(err.message);
+      console.error('❌ Error in /api/tasks route:', err);
       res.status(500).send('Server error');
     }
   });
